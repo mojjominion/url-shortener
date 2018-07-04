@@ -103,13 +103,6 @@ WSGI_APPLICATION = 'src.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(default='postgres://pfokinnkfumnem:a29868d94b91fcd55f8b74fbb1123987033608bd2ee61a5c6d436e8ed95e7b10@ec2-23-23-92-179.compute-1.amazonaws.com:5432/d5bmdivgssib23')
     }
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=config('DATABASE_URL')
-#     )
-# }
-# DATABASES['default'] = dj_database_url.config()
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 

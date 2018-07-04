@@ -36,5 +36,5 @@ class UrlData(models.Model):
 
     def get_abs_url(self):
         # url = DOMAIN+'/'+url
-        short_key = reverse('redirect_view', args=(self.random_key,), host='www', scheme='http')
+        short_key = reverse('redirect_view', args=(self.random_key,), scheme='http')
         return short_key
