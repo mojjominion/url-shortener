@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -21,12 +21,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '6_*pxtdfv!&9yhhy+nn@s)_9)^+!htjjbe$n%b+6f42)4z*yn2'
-# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mojjo.tk', 'www.mojjo.tk', '127.0.0.1', 'mojjo.herokuapp.com']
+ALLOWED_HOSTS = ['mojjo.tk', 'www.mojjo.tk', '127.0.0.1', 'https://mojjo.herokuapp.com', 'mojjo.herokuapp.com']
 # DOMAIN = '127.0.0.1:8000'
 
 # Application definition
@@ -54,15 +53,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'src.urls'
 ROOT_HOSTCONF = 'src.hosts'
 DEFAULT_HOST = 'www'
 # DEFAULT_HOST = ''
-DEFAULT_REDIRECT_URL   = 'http://mojjo.tk:8000'
-PARENT_HOST            = 'mojjo.tk:8000'
+# DEFAULT_REDIRECT_URL     = 'http://mojjo.tk:8000'
+# PARENT_HOST              = 'mojjo.tk:8000'
+
+DEFAULT_REDIRECT_URL     = 'https://mojjo.herokuapp.com'
+PARENT_HOST              = 'mojjo.herokuapp.com'
 
 TEMPLATES = [
     {
@@ -96,7 +97,7 @@ DATABASES = {
         'PORT': '',
     }
 }
-
+# DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -143,10 +144,29 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static/"),
     # '/var/www/static/',
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
 # ADMIN_MEDIA_PREFIX = '/media/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
+
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+BROKER_POOL_LIMIT = 3
+
+from celery.schedules import crontab
+
+# Other Celery settings
+CELERY_BEAT_SCHEDULE = {
+    'auto-expire': {
+        'task': 'shortner.tasks.auto_expire',
+        'schedule': crontab(minute=1),
+        # 'args': (*args)
+    },
+}
