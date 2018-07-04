@@ -13,14 +13,14 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6_*pxtdfv!&9yhhy+nn@s)_9)^+!htjjbe$n%b+6f42)4z*yn2'
+# SECRET_KEY = '6_*pxtdfv!&9yhhy+nn@s)_9)^+!htjjbe$n%b+6f42)4z*yn2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'src.urls'
@@ -141,6 +142,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static/"),
     # '/var/www/static/',
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
