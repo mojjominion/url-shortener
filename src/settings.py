@@ -59,8 +59,8 @@ ROOT_URLCONF = 'src.urls'
 ROOT_HOSTCONF = 'src.hosts'
 DEFAULT_HOST = 'www'
 # DEFAULT_HOST = ''
-# DEFAULT_REDIRECT_URL     = 'http://mojjo.tk:8000'
-# PARENT_HOST              = 'mojjo.tk:8000'
+DEFAULT_REDIRECT_URL     = 'http://mojjo.tk:8000'
+PARENT_HOST              = 'mojjo.tk:8000'
 
 DEFAULT_REDIRECT_URL     = 'https://mojjo.herokuapp.com'
 PARENT_HOST              = 'mojjo.herokuapp.com'
@@ -87,16 +87,16 @@ WSGI_APPLICATION = 'src.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'shorturl',
-#         'USER': 'mohan',
-#         'PASSWORD': 'root',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'shorturl',
+        'USER': 'mohan',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 import dj_database_url
 
 DATABASES = { 'default': dj_database_url.config() }
