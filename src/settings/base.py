@@ -59,8 +59,8 @@ ROOT_URLCONF = 'src.urls'
 ROOT_HOSTCONF = 'src.hosts'
 DEFAULT_HOST = 'www'
 # DEFAULT_HOST = ''
-DEFAULT_REDIRECT_URL = 'http://mojjo.tk:8000'
-PARENT_HOST = 'mojjo.tk:8000'
+DEFAULT_REDIRECT_URL   = 'http://mojjo.tk:8000'
+PARENT_HOST            = 'mojjo.tk:8000'
 
 TEMPLATES = [
     {
@@ -147,23 +147,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
 # ADMIN_MEDIA_PREFIX = '/media/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
-
-
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_TIMEZONE = TIME_ZONE
-BROKER_POOL_LIMIT = 3
-
-from celery.schedules import crontab
-
-# Other Celery settings
-CELERY_BEAT_SCHEDULE = {
-    'auto-expire': {
-        'task': 'shortner.tasks.auto_expire',
-        'schedule': crontab(minute=10),
-        # 'args': (*args)
-    },
-}

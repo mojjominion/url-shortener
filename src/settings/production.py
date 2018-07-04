@@ -6,7 +6,10 @@ DEBUG = False
 # DEBUG = True
 SECURE_SSL_REDIRECT = False
 
-ALLOWED_HOSTS = ['mojjo.herokuapp.com', 'mojjo.com']
+ALLOWED_HOSTS = ['https://mojjo.herokuapp.com', 'mojjo.herokuapp.com', 'mojjo.com']
+
+DEFAULT_REDIRECT_URL     = 'https://mojjo.herokuapp.com'
+PARENT_HOST              = 'mojjo.herokuapp.com'
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
