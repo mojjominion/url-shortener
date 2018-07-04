@@ -1,4 +1,4 @@
-from website.settings.base import *
+from src.settings.base import *
 
 import dj_database_url
 
