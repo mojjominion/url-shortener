@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
+import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -59,11 +59,11 @@ ROOT_URLCONF = 'src.urls'
 ROOT_HOSTCONF = 'src.hosts'
 DEFAULT_HOST = 'www'
 # DEFAULT_HOST = ''
-DEFAULT_REDIRECT_URL     = 'http://mojjo.tk:8000'
-PARENT_HOST              = 'mojjo.tk:8000'
+# DEFAULT_REDIRECT_URL     = 'http://mojjo.tk:8000'
+# PARENT_HOST              = 'mojjo.tk:8000'
 
-# DEFAULT_REDIRECT_URL     = 'https://mojjo.herokuapp.com'
-# PARENT_HOST              = 'mojjo.herokuapp.com'
+DEFAULT_REDIRECT_URL     = 'https://mojjo.herokuapp.com'
+PARENT_HOST              = 'mojjo.herokuapp.com'
 
 TEMPLATES = [
     {
@@ -97,10 +97,8 @@ WSGI_APPLICATION = 'src.wsgi.application'
 #         'PORT': '',
 #     }
 # }
-
-import dj_database_url
-
-DATABASES = { 'default': dj_database_url.config() }
+DATABASES = {'default': dj_database_url.config()}
+# DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
