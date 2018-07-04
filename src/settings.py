@@ -87,17 +87,17 @@ WSGI_APPLICATION = 'src.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shorturl',
-        'USER': 'mohan',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-# DATABASES['default'] = dj_database_url.config()
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'shorturl',
+#         'USER': 'mohan',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
+DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
