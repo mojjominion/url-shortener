@@ -2,8 +2,8 @@ from src.settings.base import *
 
 import dj_database_url
 
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 SECURE_SSL_REDIRECT = False
 
 ALLOWED_HOSTS = ['https://mojjo.herokuapp.com', 'mojjo.herokuapp.com', 'mojjo.com']
