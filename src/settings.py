@@ -24,7 +24,7 @@ SECRET_KEY = '6_*pxtdfv!&9yhhy+nn@s)_9)^+!htjjbe$n%b+6f42)4z*yn2'
 # SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['mojjo.tk', 'www.mojjo.tk', '127.0.0.1', 'https://mojjo.herokuapp.com', 'mojjo.herokuapp.com']
 # DOMAIN = '127.0.0.1:8000'
