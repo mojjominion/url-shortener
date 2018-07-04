@@ -21,10 +21,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '6_*pxtdfv!&9yhhy+nn@s)_9)^+!htjjbe$n%b+6f42)4z*yn2'
-# SECRET_KEY = os.environ['SECRET_KEY']
-
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+DEBUG = True
+# DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['mojjo.tk', 'www.mojjo.tk', '127.0.0.1', 'https://mojjo.herokuapp.com', 'mojjo.herokuapp.com']
 # DOMAIN = '127.0.0.1:8000'
@@ -98,7 +99,15 @@ WSGI_APPLICATION = 'src.wsgi.application'
 #         'PORT': '',
 #     }
 # }
-DATABASES = {'default': dj_database_url.config()}
+# DATABASES = {'default': dj_database_url.config()}
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://pfokinnkfumnem:a29868d94b91fcd55f8b74fbb1123987033608bd2ee61a5c6d436e8ed95e7b10@ec2-23-23-92-179.compute-1.amazonaws.com:5432/d5bmdivgssib23')
+    }
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
 # DATABASES['default'] = dj_database_url.config()
 
 # Password validation
