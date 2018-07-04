@@ -62,8 +62,8 @@ DEFAULT_HOST = 'www'
 DEFAULT_REDIRECT_URL     = 'http://mojjo.tk:8000'
 PARENT_HOST              = 'mojjo.tk:8000'
 
-DEFAULT_REDIRECT_URL     = 'https://mojjo.herokuapp.com'
-PARENT_HOST              = 'mojjo.herokuapp.com'
+# DEFAULT_REDIRECT_URL     = 'https://mojjo.herokuapp.com'
+# PARENT_HOST              = 'mojjo.herokuapp.com'
 
 TEMPLATES = [
     {
@@ -87,19 +87,20 @@ WSGI_APPLICATION = 'src.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shorturl',
-        'USER': 'mohan',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'shorturl',
+#         'USER': 'mohan',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
+
 import dj_database_url
 
-  DATABASES = {'default': dj_database_url.parse('postgres://pfokinnkfumnem:a29868d94b91fcd55f8b74fbb1123987033608bd2ee61a5c6d436e8ed95e7b10@ec2-23-23-92-179.compute-1.amazonaws.com:5432/d5bmdivgssib23')}
+DATABASES = { 'default': dj_database_url.config() }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
